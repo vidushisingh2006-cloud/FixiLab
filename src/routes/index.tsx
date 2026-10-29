@@ -75,7 +75,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         <motion.img src={robotLab} alt="" width={1920} height={1088}
           initial={{ scale: 1.15, opacity: 0 }} animate={{ scale: 1.04, opacity: 1 }} transition={{ duration: 2.4, ease: "easeOut" }}
-          className="absolute inset-0 h-full w-full animate-kenburns object-cover object-[70%_center] [filter:hue-rotate(95deg)_saturate(1.3)]" />
+          className="absolute inset-0 h-full w-full animate-kenburns object-cover object-[70%_center]" />
         <div className="absolute inset-0 bg-hero-veil" />
         <div className="absolute inset-y-0 right-[8%] w-[40%] overflow-hidden">
           <div className="absolute inset-x-0 h-24 animate-beam bg-gradient-to-b from-transparent via-secondary/30 to-transparent" />
@@ -86,7 +86,7 @@ function Hero() {
           <span className="absolute -right-28 top-1/2 rounded-full bg-card/85 px-2.5 py-1 text-[10px] font-bold tracking-widest text-primary backdrop-blur">SAMPLE · ANALYZING</span>
         </div>
         {[12, 28, 46, 63, 78, 90].map((l, i) => (
-          <span key={l} className="absolute bottom-0 h-2 w-2 animate-bubble rounded-full bg-secondary/50" style={{ left: `${l}%`, animationDelay: `${i * 1.3}s` }} />
+          <span key={l} className="absolute bottom-0 h-2 w-2 animate-bubble rounded-full bg-mint" style={{ left: `${l}%`, animationDelay: `${i * 1.3}s` }} />
         ))}
         <div className="absolute inset-0 grid-lines opacity-60 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_60%)]" />
       </div>
