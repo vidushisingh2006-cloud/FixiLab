@@ -80,7 +80,7 @@ function Hero() {
         <div className="absolute inset-y-0 right-[8%] w-[40%] overflow-hidden">
           <div className="absolute inset-x-0 h-24 animate-beam bg-gradient-to-b from-transparent via-secondary/30 to-transparent" />
         </div>
-        <div className="absolute right-[17%] top-[16%] hidden h-28 w-28 lg:block">
+        <div className="absolute right-[14%] top-[22%] hidden h-28 w-28 lg:block">
           <span className="absolute inset-0 animate-ping-slow rounded-full border border-secondary/60" />
           <span className="absolute inset-3 rounded-full border border-dashed border-primary/40 animate-spin [animation-duration:14s]" />
           <span className="absolute -right-28 top-1/2 rounded-full bg-card/85 px-2.5 py-1 text-[10px] font-bold tracking-widest text-primary backdrop-blur">SAMPLE · ANALYZING</span>
