@@ -14,11 +14,18 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+To run the app on your computer, install Node.js and npm first — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating) or use the official [Node.js installer](https://nodejs.org/).
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm ci
 npm run dev
+```
+
+Vite prints the local address when the server starts. Open the printed address in your browser (normally [http://localhost:8080](http://localhost:8080)). If that port is already in use, Vite will choose another port. Keep the terminal open while using the app; press `Ctrl+C` to stop the server.
+
+On Windows, run these commands from the project folder in PowerShell:
+
+```powershell
+npm.cmd ci
+npm.cmd run dev
 ```
