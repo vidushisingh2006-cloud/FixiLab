@@ -1,5 +1,6 @@
 import { motion, type HTMLMotionProps } from "framer-motion";
 import type { ReactNode } from "react";
+import logoAsset from "@/assets/fixilab-logo.png.asset.json";
 
 export function Reveal({ children, delay = 0, className, ...rest }: { children: ReactNode; delay?: number; className?: string } & HTMLMotionProps<"div">) {
   return (
@@ -28,15 +29,8 @@ export function SectionHead({ eyebrow, title, desc, light = false }: { eyebrow?:
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
-    <a href="#home" className="flex items-center gap-2.5" aria-label="DocuAudit AI home">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden>
-        <rect width="34" height="34" rx="10" className={light ? "fill-primary-foreground" : "fill-primary"} />
-        <path d="M11 8h8l5 5v13a1 1 0 0 1-1 1H11a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" className={light ? "fill-primary" : "fill-primary-foreground"} opacity=".95" />
-        <path d="m13.5 19 2.5 2.5 5-5" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="stroke-secondary" />
-      </svg>
-      <span className={`text-lg font-extrabold tracking-tight ${light ? "text-primary-foreground" : "text-primary"}`}>
-        DocuAudit<span className="text-secondary"> AI</span>
-      </span>
+    <a href="#home" aria-label="FixiLab home" className={`group inline-flex items-center ${light ? "rounded-xl bg-card px-3 py-1.5 shadow-soft" : ""}`}>
+      <img src={logoAsset.url} alt="FixiLab" width={190} height={80} className="h-11 w-auto rounded-md mix-blend-multiply transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105" />
     </a>
   );
 }

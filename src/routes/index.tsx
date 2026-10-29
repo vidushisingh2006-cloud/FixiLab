@@ -10,7 +10,7 @@ import { Dashboard, AuditDemo } from "@/components/landing/Dashboard";
 import robotLab from "@/assets/robot-lab.jpg";
 import { Reveal, SectionHead, Logo } from "@/components/landing/primitives";
 
-const TITLE = "DocuAudit AI — AI Laboratory Documentation Audit Tool";
+const TITLE = "FixiLab — AI Laboratory Documentation Audit Tool";
 const DESC = "Detect laboratory worksheet errors with AI-powered OCR, automated calculation checks, and ALCOA+ data integrity validation. Review-ready records, faster.";
 
 export const Route = createFileRoute("/")({
@@ -75,7 +75,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         <motion.img src={robotLab} alt="" width={1920} height={1088}
           initial={{ scale: 1.15, opacity: 0 }} animate={{ scale: 1.04, opacity: 1 }} transition={{ duration: 2.4, ease: "easeOut" }}
-          className="absolute inset-0 h-full w-full animate-kenburns object-cover object-[70%_center]" />
+          className="absolute inset-0 h-full w-full animate-kenburns object-cover object-[70%_center] [filter:hue-rotate(95deg)_saturate(1.3)]" />
         <div className="absolute inset-0 bg-hero-veil" />
         <div className="absolute inset-y-0 right-[8%] w-[40%] overflow-hidden">
           <div className="absolute inset-x-0 h-24 animate-beam bg-gradient-to-b from-transparent via-secondary/30 to-transparent" />
@@ -104,7 +104,7 @@ function Hero() {
             ))}
           </h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Transform laboratory worksheets into reliable, review-ready records. DocuAudit AI uses intelligent document recognition, automated calculation checks, and ALCOA+ validation to help identify errors, inconsistencies, and missing information before submission.
+            Transform laboratory worksheets into reliable, review-ready records. FixiLab uses intelligent document recognition, automated calculation checks, and ALCOA+ validation to help identify errors, inconsistencies, and missing information before submission.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mt-8 flex flex-wrap gap-3">
             <a href="#cta" className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-lift transition hover:-translate-y-0.5 active:scale-95">
@@ -174,7 +174,7 @@ function Problem() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionHead eyebrow="The Challenge" title="Small Documentation Errors Can Create Significant Risks." desc="Laboratory worksheets contain critical information that must remain accurate, complete, legible, and traceable. Manual reviews can make it difficult to identify every inconsistency across large volumes of records." />
         <div className="mt-14 grid gap-5 md:grid-cols-3">{problems.map(([I, t, d], i) => <Card key={t} icon={I} title={t} desc={d} i={i} />)}</div>
-        <Reveal className="mx-auto mt-12 max-w-2xl text-center text-lg font-semibold text-primary">DocuAudit AI helps teams identify potential issues earlier and focus their attention where it matters most.</Reveal>
+        <Reveal className="mx-auto mt-12 max-w-2xl text-center text-lg font-semibold text-primary">FixiLab helps teams identify potential issues earlier and focus their attention where it matters most.</Reveal>
       </div>
     </section>
   );
@@ -268,7 +268,7 @@ function Alcoa() {
     <section id="alcoa" className="relative overflow-hidden bg-forest py-24 lg:py-32">
       <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-secondary/20 blur-3xl" />
       <div className="relative mx-auto max-w-6xl px-5">
-        <SectionHead light eyebrow="Data Integrity Matters" title="Built Around the Principles of Reliable Data." desc="DocuAudit AI supports structured documentation reviews using the ALCOA+ data integrity framework." />
+        <SectionHead light eyebrow="Data Integrity Matters" title="Built Around the Principles of Reliable Data." desc="FixiLab supports structured documentation reviews using the ALCOA+ data integrity framework." />
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {p.map(([I, t, d], i) => (
             <Reveal key={t} delay={(i % 3) * 0.08}>
@@ -302,7 +302,7 @@ function Benefits() {
           </Reveal>
           <Reveal delay={0.12} className="relative rounded-[20px] border-2 border-secondary bg-muted p-8 shadow-lift">
             <span className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-primary-foreground">Recommended</span>
-            <h3 className="text-lg font-bold text-primary">With DocuAudit AI</h3>
+            <h3 className="text-lg font-bold text-primary">With FixiLab</h3>
             <ul className="mt-6 space-y-4">{after.map((b, i) => (
               <motion.li key={b} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 font-medium text-foreground">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-secondary-foreground"><Check className="h-3.5 w-3.5" /></span>{b}
@@ -331,11 +331,11 @@ function Audience() {
 }
 
 const faqs = [
-  ["What is DocuAudit AI?", "DocuAudit AI is an intelligent laboratory documentation auditing platform designed to help identify potential worksheet errors, calculation discrepancies, missing information, and data integrity gaps."],
+  ["What is FixiLab?", "FixiLab is an intelligent laboratory documentation auditing platform designed to help identify potential worksheet errors, calculation discrepancies, missing information, and data integrity gaps."],
   ["What document formats are supported?", "The planned upload workflow supports PDF, PNG, JPG, and JPEG files. Actual limits and support depend on the implemented document-processing service."],
   ["Can it read handwritten laboratory worksheets?", "OCR can help extract handwritten text, but accuracy depends on handwriting quality, image resolution, and document conditions. Uncertain fields should be reviewed by a person."],
   ["How does calculation verification work?", "The platform can apply configured calculation rules to extracted values and flag discrepancies between expected and recorded results. Validation depends on the available rules and the accuracy of extracted data."],
-  ["What is ALCOA+ validation?", "ALCOA+ is a framework for data integrity. DocuAudit AI is designed to support selected documentation checks aligned with these principles; automated checks do not independently certify compliance."],
+  ["What is ALCOA+ validation?", "ALCOA+ is a framework for data integrity. FixiLab is designed to support selected documentation checks aligned with these principles; automated checks do not independently certify compliance."],
   ["Does the platform guarantee regulatory compliance?", "No. It supports documentation review and identification of potential issues. Regulatory compliance depends on the complete quality system, applicable requirements, validated processes, and appropriate human oversight."],
   ["Is my laboratory data secure?", "Data protection depends on the deployed application's access controls, storage configuration, encryption, retention policies, and backend security. Do not upload sensitive laboratory records until the applicable security controls have been implemented and reviewed."],
 ];
@@ -413,8 +413,8 @@ function Footer() {
       </div>
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-primary-foreground/55 md:flex-row md:justify-between">
-          <p>© 2026 DocuAudit AI. All rights reserved.</p>
-          <p className="max-w-xl">DocuAudit AI supports documentation review and does not replace qualified human review or guarantee regulatory compliance.</p>
+          <p>© 2026 FixiLab. All rights reserved.</p>
+          <p className="max-w-xl">FixiLab supports documentation review and does not replace qualified human review or guarantee regulatory compliance.</p>
         </div>
       </div>
     </footer>
