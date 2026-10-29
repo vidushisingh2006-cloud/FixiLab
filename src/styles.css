@@ -135,3 +135,16 @@
 @utility animate-floaty { animation: floaty 5s ease-in-out infinite; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @utility animate-marquee { animation: marquee 30s linear infinite; }
+
+@utility bg-hero-veil {
+  background-image: linear-gradient(90deg, var(--background) 0%, oklch(0.977 0.005 130 / 0.92) 38%, oklch(0.977 0.005 130 / 0.35) 70%, oklch(0.977 0.005 130 / 0.15) 100%),
+    linear-gradient(0deg, var(--background) 0%, transparent 25%);
+}
+@keyframes kenburns { 0%,100% { transform: scale(1.04) translate(0,0); } 50% { transform: scale(1.1) translate(-1.5%, -1%); } }
+@utility animate-kenburns { animation: kenburns 24s ease-in-out 2.4s infinite; }
+@keyframes beam { 0% { top: -15%; } 100% { top: 110%; } }
+@utility animate-beam { animation: beam 5s linear infinite; }
+@keyframes ping-slow { 0% { transform: scale(0.7); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+@utility animate-ping-slow { animation: ping-slow 2.6s ease-out infinite; }
+@keyframes bubble { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(-80vh) scale(1.3); opacity: 0; } }
+@utility animate-bubble { animation: bubble 9s ease-in infinite; }

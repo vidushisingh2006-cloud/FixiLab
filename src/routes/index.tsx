@@ -7,6 +7,7 @@ import {
   Check, Minus, ChevronDown, User, Type, CalendarClock, FileText, Target, CircleCheckBig, Equal, Archive, FolderSearch,
 } from "lucide-react";
 import { Dashboard, AuditDemo } from "@/components/landing/Dashboard";
+import robotLab from "@/assets/robot-lab.jpg";
 import { Reveal, SectionHead, Logo } from "@/components/landing/primitives";
 
 const TITLE = "DocuAudit AI — AI Laboratory Documentation Audit Tool";
@@ -71,7 +72,24 @@ function Hero() {
   const y = useTransform(scrollY, [0, 600], [0, -60]);
   return (
     <section id="home" className="relative overflow-hidden bg-hero pb-20 pt-32 lg:pb-28 lg:pt-40">
-      <div className="pointer-events-none absolute inset-0 grid-lines [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_65%)]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <motion.img src={robotLab} alt="" width={1920} height={1088}
+          initial={{ scale: 1.15, opacity: 0 }} animate={{ scale: 1.04, opacity: 1 }} transition={{ duration: 2.4, ease: "easeOut" }}
+          className="absolute inset-0 h-full w-full animate-kenburns object-cover object-[70%_center]" />
+        <div className="absolute inset-0 bg-hero-veil" />
+        <div className="absolute inset-y-0 right-[8%] w-[40%] overflow-hidden">
+          <div className="absolute inset-x-0 h-24 animate-beam bg-gradient-to-b from-transparent via-secondary/30 to-transparent" />
+        </div>
+        <div className="absolute right-[17%] top-[16%] hidden h-28 w-28 lg:block">
+          <span className="absolute inset-0 animate-ping-slow rounded-full border border-secondary/60" />
+          <span className="absolute inset-3 rounded-full border border-dashed border-primary/40 animate-spin [animation-duration:14s]" />
+          <span className="absolute -right-28 top-1/2 rounded-full bg-card/85 px-2.5 py-1 text-[10px] font-bold tracking-widest text-primary backdrop-blur">SAMPLE · ANALYZING</span>
+        </div>
+        {[12, 28, 46, 63, 78, 90].map((l, i) => (
+          <span key={l} className="absolute bottom-0 h-2 w-2 animate-bubble rounded-full bg-secondary/50" style={{ left: `${l}%`, animationDelay: `${i * 1.3}s` }} />
+        ))}
+        <div className="absolute inset-0 grid-lines opacity-60 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_60%)]" />
+      </div>
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[1.05fr_1fr]">
         <div>
           <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
