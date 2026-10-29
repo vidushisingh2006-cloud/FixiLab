@@ -1,6 +1,6 @@
 import { motion, type HTMLMotionProps } from "framer-motion";
 import type { ReactNode } from "react";
-import logoAsset from "@/assets/fixilab-logo.png.asset.json";
+import logoUrl from "@/assets/fixilab-logo-brand.png";
 
 export function Reveal({ children, delay = 0, className, ...rest }: { children: ReactNode; delay?: number; className?: string } & HTMLMotionProps<"div">) {
   return (
@@ -30,7 +30,7 @@ export function SectionHead({ eyebrow, title, desc, light = false }: { eyebrow?:
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <a href="#home" aria-label="FixiLab home" className={`group inline-flex items-center ${light ? "rounded-xl bg-card px-3 py-1.5 shadow-soft" : ""}`}>
-      <img src={logoAsset.url} alt="FixiLab" width={190} height={80} className="h-11 w-auto rounded-md mix-blend-multiply transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105" />
+      <img src={logoUrl} alt="FixiLab" width={190} height={80} className="h-11 w-auto rounded-md mix-blend-multiply transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105" />
     </a>
   );
 }
