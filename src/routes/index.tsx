@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
@@ -10,19 +10,53 @@ import { Dashboard, AuditDemo } from "@/components/landing/Dashboard";
 import robotLab from "@/assets/robot-lab.jpg";
 import { Reveal, SectionHead, Logo } from "@/components/landing/primitives";
 
-const TITLE = "FixiLab — AI Laboratory Documentation Audit Tool";
-const DESC = "Detect laboratory worksheet errors with AI-powered OCR, automated calculation checks, and ALCOA+ data integrity validation. Review-ready records, faster.";
+const TITLE = "FixiLab | Intelligent Laboratory Documentation Audit Software";
+const DESC = "Detect calculation discrepancies, documentation gaps and inconsistencies in analytical laboratory worksheets with FixiLab's intelligent documentation audit platform.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
+      { name: "keywords", content: "Intelligent Laboratory Documentation Audit Software, Analytical Worksheet Audit Software, Laboratory Worksheet Error Detection, AI-Powered Laboratory Documentation Audit, Analytical Data Validation, Laboratory Quality Assurance Software, ALCOA+ Documentation Review, Laboratory Calculation Verification" },
+      { rel: "canonical", href: "https://animated-idea-garden.vercel.app/" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://animated-idea-garden.vercel.app/" },
+      { property: "og:site_name", content: "FixiLab" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "FixiLab",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": DESC,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        })
+      },
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "FixiLab",
+          "url": "https://animated-idea-garden.vercel.app/",
+          "description": DESC
+        })
+      }
+    ]
   }),
   component: Index,
 });
@@ -45,8 +79,8 @@ function Header() {
           {nav.map(([l, id]) => <a key={id} href={`#${id}`} className="text-sm font-medium text-muted-foreground transition hover:text-primary">{l}</a>)}
         </nav>
         <div className="hidden items-center gap-4 lg:flex">
-          <a href="#cta" className="text-sm font-semibold text-foreground hover:text-primary">Sign In</a>
-          <a href="#cta" className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 active:scale-95">Get Started</a>
+          <Link to="/audit" className="text-sm font-semibold text-foreground hover:text-primary">Sign In</Link>
+          <Link to="/audit" className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 active:scale-95">Get Started</Link>
         </div>
         <button className="rounded-lg p-2 text-primary lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -57,7 +91,7 @@ function Header() {
           <motion.nav initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             className="mx-auto mt-2 max-w-6xl rounded-2xl border border-border bg-card p-4 shadow-lift lg:hidden">
             {nav.map(([l, id]) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-2.5 font-medium text-foreground hover:bg-muted">{l}</a>)}
-            <a href="#cta" onClick={() => setOpen(false)} className="mt-2 block rounded-xl bg-primary px-4 py-3 text-center font-semibold text-primary-foreground">Get Started</a>
+            <Link to="/audit" onClick={() => setOpen(false)} className="mt-2 block rounded-xl bg-primary px-4 py-3 text-center font-semibold text-primary-foreground">Start Your First Audit</Link>
           </motion.nav>
         )}
       </AnimatePresence>
@@ -107,9 +141,9 @@ function Hero() {
             Transform laboratory worksheets into reliable, review-ready records. FixiLab uses intelligent document recognition, automated calculation checks, and ALCOA+ validation to help identify errors, inconsistencies, and missing information before submission.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mt-8 flex flex-wrap gap-3">
-            <a href="#cta" className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-lift transition hover:-translate-y-0.5 active:scale-95">
+            <Link to="/audit" className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-lift transition hover:-translate-y-0.5 active:scale-95">
               Start Your First Audit <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </a>
+            </Link>
             <a href="#how" className="inline-flex items-center rounded-xl border border-border bg-card px-6 py-3.5 font-semibold text-primary transition hover:border-secondary">Explore How It Works</a>
           </motion.div>
           <p className="mt-5 text-sm italic text-muted-foreground">Smarter reviews. Clearer findings. More reliable documentation.</p>
@@ -384,7 +418,7 @@ function Cta() {
           <h2 className="text-4xl font-extrabold text-primary-foreground sm:text-6xl">Make Every Worksheet <span className="text-muted">Count.</span></h2>
           <p className="mx-auto mt-5 max-w-xl text-primary-foreground/75">Bring greater clarity to laboratory documentation reviews with intelligent extraction, automated checks, and actionable audit findings.</p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <a href="#home" className="group inline-flex items-center gap-2 rounded-xl bg-muted px-6 py-3.5 font-bold text-primary transition hover:-translate-y-0.5">Start Your First Audit <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></a>
+            <Link to="/audit" className="group inline-flex items-center gap-2 rounded-xl bg-muted px-6 py-3.5 font-bold text-primary transition hover:-translate-y-0.5">Start Your First Audit <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></Link>
             <a href="#features" className="rounded-xl border border-primary-foreground/25 px-6 py-3.5 font-semibold text-primary-foreground transition hover:bg-primary-foreground/10">Explore Features</a>
           </div>
           <p className="mt-6 text-sm text-primary-foreground/60">Built to support more consistent reviews and stronger documentation practices.</p>

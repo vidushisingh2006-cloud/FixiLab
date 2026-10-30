@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+sqlalchemy
+pypdf
+pymupdf
+pillow
+pytesseract
+pytest
+httpx

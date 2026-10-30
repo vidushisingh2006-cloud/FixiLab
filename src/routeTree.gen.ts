@@ -10,33 +10,60 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuditRouteImport } from './routes/audit'
+import { Route as AuditIndexRouteImport } from './routes/audit.index'
+import { Route as AuditAuditIdRouteImport } from './routes/audit.$auditId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditIndexRoute = AuditIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuditRoute,
+} as any)
+const AuditAuditIdRoute = AuditAuditIdRouteImport.update({
+  id: '/$auditId',
+  path: '/$auditId',
+  getParentRoute: () => AuditRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRouteWithChildren
+  '/audit/$auditId': typeof AuditAuditIdRoute
+  '/audit/': typeof AuditIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audit/$auditId': typeof AuditAuditIdRoute
+  '/audit': typeof AuditIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audit': typeof AuditRouteWithChildren
+  '/audit/$auditId': typeof AuditAuditIdRoute
+  '/audit/': typeof AuditIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/audit' | '/audit/$auditId' | '/audit/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/audit/$auditId' | '/audit'
+  id: '__root__' | '/' | '/audit' | '/audit/$auditId' | '/audit/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuditRoute: typeof AuditRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +75,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit/': {
+      id: '/audit/'
+      path: '/'
+      fullPath: '/audit/'
+      preLoaderRoute: typeof AuditIndexRouteImport
+      parentRoute: typeof AuditRoute
+    }
+    '/audit/$auditId': {
+      id: '/audit/$auditId'
+      path: '/$auditId'
+      fullPath: '/audit/$auditId'
+      preLoaderRoute: typeof AuditAuditIdRouteImport
+      parentRoute: typeof AuditRoute
+    }
   }
 }
 
+interface AuditRouteChildren {
+  AuditAuditIdRoute: typeof AuditAuditIdRoute
+  AuditIndexRoute: typeof AuditIndexRoute
+}
+
+const AuditRouteChildren: AuditRouteChildren = {
+  AuditAuditIdRoute: AuditAuditIdRoute,
+  AuditIndexRoute: AuditIndexRoute,
+}
+
+const AuditRouteWithChildren = AuditRoute._addFileChildren(AuditRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuditRoute: AuditRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

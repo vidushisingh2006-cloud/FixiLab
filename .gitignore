@@ -8,6 +8,13 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+backend/venv/
+backend/**/__pycache__/
+backend/backend/
+backend/uploads/
+backend/reports/
+.pytest_cache/
+fixilab.db
 dist
 dist-ssr
 .output
