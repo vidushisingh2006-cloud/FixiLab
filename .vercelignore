@@ -1,0 +1,9 @@
+backend/
+uploads/
+reports/
+*.py
+__pycache__/
+*.pyc
+.env
+.venv
+venv/

@@ -1,29 +1,15 @@
 services:
-  # Backend Service (FastAPI)
+  # Backend Service (FastAPI) only
   - type: web
     name: fixilab-backend
-    env: python
-    buildCommand: cd backend && pip install -r requirements.txt
-    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
     envVars:
       - key: PORT
         value: 8000
-      - key: PYTHON_VERSION
-        value: 3.10.0
     disk:
       name: uploads
       mountPath: /opt/render/project/backend/uploads
       sizeGB: 1
-
-  # Frontend Service (React/Vite)
-  - type: web
-    name: fixilab-frontend
-    env: node
-    buildCommand: npm run build
-    startCommand: npm run preview
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: fixilab-backend
-          property: url
